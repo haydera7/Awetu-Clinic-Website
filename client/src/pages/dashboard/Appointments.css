@@ -1,0 +1,72 @@
+.appointments-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 12px;
+  color: var(--color-gray-500);
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  background: var(--color-highlight);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: white;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-box input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-primary { background: rgba(56, 189, 248, 0.1); color: var(--color-primary); border: 1px solid rgba(56, 189, 248, 0.2); }
+.badge-warning { background: rgba(251, 191, 36, 0.1); color: var(--color-warning); border: 1px solid rgba(251, 191, 36, 0.2); }
+.badge-success { background: rgba(52, 211, 153, 0.1); color: var(--color-success); border: 1px solid rgba(52, 211, 153, 0.2); }
+.badge-danger { background: rgba(248, 113, 113, 0.1); color: var(--color-danger); border: 1px solid rgba(248, 113, 113, 0.2); }
+
+.tab-btn {
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--color-primary);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}

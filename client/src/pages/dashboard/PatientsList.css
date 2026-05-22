@@ -1,0 +1,303 @@
+.patients-page {
+  animation: fadeIn 0.6s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-subtitle {
+  color: var(--color-gray-500);
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-sm);
+}
+
+/* Panel Design */
+.patients-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  min-width: 0;
+}
+
+.panel-filters {
+  padding: var(--spacing-6);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray-500);
+  pointer-events: none;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 12px 16px 12px 48px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-base);
+}
+
+.search-wrapper input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+.btn-icon-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--color-highlight);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-gray-300);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-icon-label:hover {
+  background: var(--color-highlight-hover);
+  border-color: var(--color-gray-500);
+  color: var(--color-white);
+}
+
+/* Table Styling */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.patients-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.patients-table th {
+  text-align: left;
+  padding: var(--spacing-4) var(--spacing-6);
+  color: var(--color-gray-500);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.patients-table td {
+  padding: var(--spacing-5) var(--spacing-6);
+  color: var(--color-gray-300);
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  transition: background 0.2s ease;
+}
+
+.patients-table tbody tr {
+  cursor: pointer;
+}
+
+.patients-table tbody tr:hover {
+  background: rgba(56, 189, 248, 0.03);
+}
+
+.patient-pid {
+  font-weight: 600;
+  color: var(--color-primary);
+  font-family: monospace;
+  font-size: var(--font-size-base);
+}
+
+.patient-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-neon);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+}
+
+.patient-name {
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.patient-meta {
+  color: var(--color-gray-400);
+}
+
+.visit-date {
+  padding: 4px 8px;
+  background: var(--color-highlight);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+
+.status-badge {
+  display: inline-flex;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.status-badge.active {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-success);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.status-badge.inactive {
+  background: rgba(255, 0, 96, 0.1);
+  color: var(--color-danger);
+  border: 1px solid rgba(255, 0, 96, 0.2);
+}
+
+.status-badge.referred {
+  background: rgba(147, 51, 234, 0.1);
+  color: var(--color-purple, #a855f7);
+  border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+/* Actions */
+.row-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--color-highlight);
+  border: 1px solid var(--glass-border);
+  color: var(--color-gray-400);
+  transition: all var(--transition-fast);
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.action-btn.view:hover { background: var(--color-primary); color: #0f172a; }
+.action-btn.edit:hover { background: var(--color-purple); color: var(--color-white); }
+.action-btn.delete:hover { background: var(--color-danger); color: var(--color-white); }
+
+/* Pagination */
+.pagination-wrapper {
+  padding: var(--spacing-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.pagination-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}
+
+.pagination-info span {
+  color: var(--color-white);
+  font-weight: 500;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--color-highlight);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-gray-300);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.pagination-btn:not(:disabled):hover {
+  background: var(--color-highlight-hover);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-400);
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px !important;
+  color: var(--color-gray-500);
+  font-style: italic;
+}

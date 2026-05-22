@@ -1,0 +1,340 @@
+:root {
+  /* Professional Dark Mode Colors (Calm Slate) */
+  --color-bg-base: #0f172a; /* Soft dark slate instead of harsh black */
+  --color-bg-surface: rgba(30, 41, 59, 0.7); /* Readable surface panels */
+  --color-bg-surface-hover: rgba(51, 65, 85, 0.8);
+  --color-border: rgba(255, 255, 255, 0.08); /* Fainter, cleaner borders */
+  --color-border-glow: rgba(56, 189, 248, 0.2); /* Soft highlight border, no neon */
+  --color-highlight: rgba(255, 255, 255, 0.03);
+  --color-highlight-hover: rgba(255, 255, 255, 0.06);
+
+  /* Primary Branding Colors (Calm Medical Accents) */
+  --color-primary: #38bdf8; /* Calming Sky Blue instead of Electric Cyan */
+  --color-primary-dark: #0284c7;
+  --color-purple: #818cf8; /* Soft Indigo instead of Neon Purple */
+  --color-blue: #3b82f6; /* Trustworthy Blue instead of Deep Neon */
+
+  /* Neutrals for Text & Elements */
+  --color-white: #f8fafc; /* Softer off-white for reduced eye strain */
+  --color-gray-100: #f1f5f9;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+
+  /* Status Colors (Muted for dark mode readability) */
+  --color-success: #34d399; /* Muted Emerald */
+  --color-success-light: rgba(52, 211, 153, 0.1);
+  --color-danger: #f87171; /* Soft Red */
+  --color-danger-light: rgba(248, 113, 113, 0.1);
+  --color-warning: #fbbf24;
+  --color-warning-light: rgba(251, 191, 36, 0.1);
+
+  /* Gradients (Subtle and Professional) */
+  --gradient-neon: linear-gradient(135deg, var(--color-blue) 0%, var(--color-primary) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+
+  /* Typography (Optimized for Readability) */
+  --font-family-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 0.75rem;   /* 12px - Labels */
+  --font-size-sm: 0.875rem;  /* 14px - Badges, secondary text */
+  --font-size-base: 1rem;    /* 16px - Primary Body */
+  --font-size-lg: 1.125rem;  /* 18px - Lead paragraphs */
+  --font-size-xl: 1.25rem;   /* 20px - Sub-headings */
+  --font-size-2xl: 1.5rem;   /* 24px - Section Sub-titles */
+  --font-size-3xl: 1.875rem; /* 30px - Smaller Section Headings */
+  --font-size-4xl: 2.25rem;  /* 36px - Section Headings */
+  --font-size-5xl: 3rem;     /* 48px - Restrained Hero Heading */
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+
+  /* Form/Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Subtle Drop Shadows & Borders */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-glow-cyan: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(56, 189, 248, 0.3);
+  --shadow-glow-purple: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(129, 140, 248, 0.3);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-blur: 16px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Snappier easing */
+}
+
+/* Base Typographic Utility */
+.text-gradient {
+  background: var(--gradient-neon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heading-1 {
+  font-size: var(--font-size-5xl);
+  font-weight: 600; /* Dropped from 700 to 600 for UI calmness */
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.heading-2 {
+  font-size: var(--font-size-4xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.heading-3 {
+  font-size: var(--font-size-3xl);
+  font-weight: 500; /* Softer hierarchy */
+  line-height: 1.3;
+}
+
+.heading-4 {
+  font-size: var(--font-size-2xl);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Generalized Body Texts */
+p, .feature-desc, .about-desc {
+  line-height: 1.6; /* Ensure comfortable reading paragraphs */
+  max-width: 65ch; /* Ideal reading length */
+}
+
+@media (max-width: 1024px) {
+  .heading-1 {
+    font-size: var(--font-size-4xl);
+  }
+
+  .heading-2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .heading-3 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 767px) {
+  .heading-1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .heading-2 {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Glass & Card Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-white);
+}
+
+.glow-panel-cyan {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--color-border-glow);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow-cyan);
+  color: var(--color-white);
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Button Reset & FXIFY Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-full);
+  /* Pill shaped */
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: 1px solid transparent;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #0f172a;
+  /* Dark slate text on blue */
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+  transform: translateY(-2px);
+  background: var(--color-white);
+}
+
+.btn-secondary {
+  background: var(--color-highlight);
+  color: var(--color-white);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: var(--color-highlight-hover);
+  border-color: var(--color-primary);
+}
+
+.btn-glow {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.btn-glow:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+/* Generics Layout */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  /* Wider container */
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--color-highlight);
+  border: 1px solid var(--glass-border);
+  color: var(--color-gray-300);
+}
+
+.badge-success {
+  border-color: var(--color-success);
+  color: var(--color-success);
+  background: var(--color-success-light);
+}
+
+.badge-primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(0, 240, 255, 0.1);
+}
+
+.badge-danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background: var(--color-danger-light);
+}
+
+.badge-warning {
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+  background: var(--color-warning-light);
+}
+
+/* --- LIGHT THEME VARIABLES --- */
+[data-theme="light"] {
+  /* Core Light Mode Colors */
+  --color-bg-base: #f8fafc;
+  --color-bg-surface: rgba(255, 255, 255, 0.85);
+  --color-bg-surface-hover: rgba(203, 213, 225, 0.4);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-glow: rgba(0, 136, 170, 0.3);
+  --color-highlight: rgba(0, 0, 0, 0.05);
+  --color-highlight-hover: rgba(0, 0, 0, 0.1);
+
+  /* Primary Branding Colors (adjusted for light mode) */
+  --color-primary: #0284c7;
+  --color-primary-dark: #0369a1;
+  --color-purple: #7c3aed;
+  --color-blue: #2563eb;
+  --color-avatar: #1ef29afd;
+
+  /* Neutrals for Text & Elements */
+  --color-white: #0f172a;
+  /* Main text color inverted */
+  --color-gray-100: #1e293b;
+  --color-gray-300: #334155;
+  --color-gray-400: #475569;
+  --color-gray-500: #64748b;
+  --color-gray-700: #e2e8f0;
+  --color-gray-800: #f1f5f9;
+  --color-gray-900: #ffffff;
+  /* Typically dark mode's gray-900 is background-ish. In light mode it is white. */
+
+  /* Status Colors */
+  --color-success: #16a34a;
+  --color-success-light: rgba(22, 163, 74, 0.1);
+  --color-danger: #dc2626;
+  --color-danger-light: rgba(220, 38, 38, 0.1);
+  --color-warning: #ea580c;
+  --color-warning-light: rgba(234, 88, 12, 0.1);
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-glow-cyan: 0 0 15px rgba(2, 132, 199, 0.2);
+  --shadow-glow-purple: 0 0 15px rgba(124, 58, 237, 0.2);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(0, 0, 0, 0.06);
+}
