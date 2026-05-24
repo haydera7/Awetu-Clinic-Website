@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Appointment from '../models/Appointment.js';
 import Patient from '../models/Patient.js';
 import User from '../models/User.js';
@@ -131,6 +132,25 @@ export const updateAppointmentStatus = async (req, res) => {
           reason: appointment.reason || 'Appointment Check-in'
         });
         appointment.visitId = visit.visitId;
+      }
+
+      // Update patient status to 'Active' and set lastVisit date safely
+      try {
+        const patientQuery = mongoose.Types.ObjectId.isValid(appointment.patientId) ? { _id: appointment.patientId } : { pid: appointment.patientId };
+        const patient = await Patient.findOne(patientQuery);
+        if (patient) {
+          patient.status = 'Active';
+          patient.lastVisit = new Date().toISOString().split('T')[0];
+          await patient.save();
+
+          // Emit real-time event if socket.io is available
+          const io = req.app.get('io');
+          if (io) {
+            io.emit('patient-updated', patient);
+          }
+        }
+      } catch (e) {
+        console.error('Failed to update patient status on check-in:', e.message);
       }
     }
 

@@ -6,6 +6,7 @@ export const translations = {
     myProfile: 'My Profile',
     settings: 'Settings',
     logout: 'Logout',
+    messages: 'Messages',
 
     // Overview / Home Portal
     myHealthPortal: 'My Health Portal',
@@ -92,6 +93,7 @@ export const translations = {
     myProfile: 'የግል መገለጫዬ',
     settings: 'ቅንብሮች',
     logout: 'ውጣ',
+    messages: 'መልዕክቶች',
 
     // Overview / Home Portal
     myHealthPortal: 'የጤና መግቢያዬ',
@@ -178,6 +180,7 @@ export const translations = {
     myProfile: 'Piroofaayilii Koo',
     settings: 'Qindaa\'inoota',
     logout: 'Ba \'i',
+    messages: 'Ergaa',
     // Overview / Home Portal
     myHealthPortal: 'Portaala Fayyaa Koo',
     personalMedicalRecords: 'Galmeewwan Fayyaa Koo',

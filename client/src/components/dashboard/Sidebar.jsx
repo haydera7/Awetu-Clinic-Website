@@ -11,13 +11,15 @@ import {
   Pill,
   BarChart,
   User,
-  Megaphone
+  Megaphone,
+  MessageSquare,
+  X
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useData } from '../../contexts/DataContext';
 import { useTranslation } from '../../utils/translations';
 
-export default function Sidebar({ isOpen }) {
+export default function Sidebar({ isOpen, onClose }) {
   const { user, logout } = useAuth();
   const { patients, openAddPatientModal } = useData();
   const role = user?.role || 'Doctor';
@@ -32,6 +34,7 @@ export default function Sidebar({ isOpen }) {
     { name: 'Staff', path: '/dashboard/staff', icon: <Users size={20} />, roles: ['Admin'] },
     { name: 'Visits', path: '/dashboard/visits', icon: <CalendarDays size={20} />, roles: ['Admin', 'Doctor', 'Receptionist', 'Nurse'] },
     { name: 'Appointments', path: '/dashboard/appointments', icon: <CalendarDays size={20} />, roles: ['Admin', 'Doctor', 'Receptionist', 'Nurse', 'Patient'] },
+    { name: 'Messages', path: '/dashboard/messages', icon: <MessageSquare size={20} />, roles: ['Receptionist', 'Patient'] },
     { name: 'Medical Records', path: '/dashboard/records', icon: <FileText size={20} />, roles: ['Admin', 'Doctor', 'Lab Technician', 'Pharmacist', 'Nurse'] },
     { name: 'Pharmacy & Billing', path: '/dashboard/pharmacy', icon: <Pill size={20} />, roles: ['Admin', 'Pharmacist'] },
     { name: 'Analytics', path: '/dashboard/analytics', icon: <BarChart size={20} />, roles: ['Admin'] },
@@ -48,14 +51,38 @@ export default function Sidebar({ isOpen }) {
     if (name === 'Overview') return t('overview');
     if (name === 'Appointments') return t('appointments');
     if (name === 'My Profile') return t('myProfile');
+    if (name === 'Messages') return t('messages');
     return name;
+  };
+
+  const handleItemClick = () => {
+    if (window.innerWidth < 1024 && onClose) {
+      onClose();
+    }
   };
 
   return (
     <aside className={`dashboard-sidebar ${isOpen ? 'open' : 'closed'}`}>
-      <div className="sidebar-header">
-        <HeartPulse size={28} className="logo-icon" />
-        <span className="sidebar-logo-text">HealthCare Pro</span>
+      <div className="sidebar-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <HeartPulse size={28} className="logo-icon" />
+          <span className="sidebar-logo-text">HealthCare Pro</span>
+        </div>
+        {isOpen && (
+          <button 
+            className="sidebar-close-btn"
+            onClick={onClose}
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              color: 'var(--color-gray-400)', 
+              cursor: 'pointer',
+              display: 'none' // will be shown via media query in CSS
+            }}
+          >
+            <X size={20} />
+          </button>
+        )}
       </div>
 
       {canAddPatient && (
@@ -63,7 +90,10 @@ export default function Sidebar({ isOpen }) {
           <button
             className="btn btn-primary w-full"
             style={{ justifyContent: 'center' }}
-            onClick={() => openAddPatientModal()}
+            onClick={() => {
+              openAddPatientModal();
+              handleItemClick();
+            }}
           >
             <Zap size={16} /> <span style={{ marginLeft: '4px' }}>Add Patient</span>
           </button>
@@ -76,6 +106,7 @@ export default function Sidebar({ isOpen }) {
             key={item.name}
             to={item.path}
             className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+            onClick={handleItemClick}
           >
             {item.icon}
             <span className="sidebar-item-text">{getTranslatedName(item.name)}</span>
@@ -85,11 +116,22 @@ export default function Sidebar({ isOpen }) {
 
       <div className="sidebar-footer">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <NavLink to="/dashboard/settings" className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}>
+          <NavLink 
+            to="/dashboard/settings" 
+            className={({ isActive }) => `sidebar-item ${isActive ? 'active' : ''}`}
+            onClick={handleItemClick}
+          >
             <Settings size={20} />
             <span className="sidebar-item-text">{role === 'Patient' ? t('settings') : 'Settings'}</span>
           </NavLink>
-          <button onClick={logout} className="sidebar-item" style={{ color: 'var(--color-danger)', border: 'none', background: 'none', width: '100%', cursor: 'pointer' }}>
+          <button 
+            onClick={() => {
+              logout();
+              handleItemClick();
+            }} 
+            className="sidebar-item" 
+            style={{ color: 'var(--color-danger)', border: 'none', background: 'none', width: '100%', cursor: 'pointer' }}
+          >
             <LogOut size={20} />
             <span className="sidebar-item-text">{role === 'Patient' ? t('logout') : 'Logout'}</span>
           </button>

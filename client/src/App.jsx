@@ -19,6 +19,7 @@ import Appointments from './pages/dashboard/Appointments';
 import MyProfile from './pages/dashboard/MyProfile';
 import PaymentVerify from './pages/dashboard/PaymentVerify';
 import Announcements from './pages/dashboard/Announcements';
+import Messages from './pages/dashboard/Messages';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                 <Route path="visits" element={<VisitsList />} />
                 <Route path="records" element={<MedicalRecords />} />
                 <Route path="appointments" element={<Appointments />} />
+                <Route path="messages" element={<Messages />} />
                 <Route path="staff" element={<StaffList />} />
                 <Route path="pharmacy" element={<PharmacyBilling />} />
                 <Route path="billing/verify" element={<PaymentVerify />} />

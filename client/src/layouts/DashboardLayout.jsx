@@ -14,10 +14,23 @@ import Toast from '../components/dashboard/Toast';
 import './DashboardLayout.css';
 
 export default function DashboardLayout() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => window.innerWidth >= 1024);
   const { isAddPatientModalOpen, isAddVisitModalOpen, isAddRecordModalOpen, isAddStaffModalOpen } = useData();
   const { user } = useAuth();
   const { toasts, removeToast } = useSocket();
+
+  // Handle window resizing to close/open sidebar dynamically
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      } else {
+        setIsSidebarOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Premium loader state (shown for a minimum of 5 seconds on new login session)
   const [showLoader, setShowLoader] = useState(() => {
@@ -136,7 +149,7 @@ export default function DashboardLayout() {
 
   return (
     <div className="dashboard-layout">
-      <Sidebar isOpen={isSidebarOpen} />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       
       <div className={`dashboard-main ${isSidebarOpen ? 'expanded' : 'collapsed'}`}>
         <DashboardNavbar onMenuToggle={toggleSidebar} />

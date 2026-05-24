@@ -89,6 +89,7 @@ import appointmentRoutes from './routes/appointmentRoutes.js';
 import notificationRoutes from './routes/notificationRoutes.js';
 import announcementRoutes from './routes/announcementRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import messageRoutes from './routes/messageRoutes.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/patients', patientRoutes);
@@ -102,6 +103,7 @@ app.use('/api/appointments', appointmentRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/announcements', announcementRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/messages', messageRoutes);
 
 app.get('/', (req, res) => {
   res.send('HealthCare Pro API with Socket.io is running...');

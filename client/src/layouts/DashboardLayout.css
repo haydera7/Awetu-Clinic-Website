@@ -42,6 +42,27 @@
   border-bottom: 1px solid var(--glass-border);
 }
 
+.sidebar-close-btn {
+  display: none;
+  transition: all var(--transition-fast);
+  padding: var(--spacing-2);
+  border-radius: var(--radius-full);
+}
+
+.sidebar-close-btn:hover {
+  background: var(--color-highlight);
+  color: var(--color-primary) !important;
+}
+
+@media (max-width: 1023px) {
+  .sidebar-close-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
 .sidebar-logo-text {
   font-weight: 700;
   font-size: var(--font-size-lg);
