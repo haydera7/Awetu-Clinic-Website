@@ -41,7 +41,7 @@ export const SocketProvider = ({ children }) => {
 
     if (user) {
       fetchNotifications();
-      const newSocket = io('http://localhost:3000');
+      const newSocket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:3000');
       setSocket(newSocket);
 
       if (!hasWelcomed.current) {
