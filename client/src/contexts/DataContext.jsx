@@ -274,6 +274,26 @@ export const DataProvider = ({ children }) => {
           await db.patients.add(serverPatient);
           await db.syncQueue.delete(item.id);
 
+          // Update any local IndexedDB visits that reference the temporary patient ID
+          if (localId) {
+            const localVisits = await db.visits.where('patientId').equals(localId).toArray();
+            for (const v of localVisits) {
+              await db.visits.update(v.id, { patientId: serverPatient._id });
+            }
+
+            // Update subsequent visits in the sync queue that reference the temporary patient ID
+            const pendingQueueItems = await db.syncQueue.where('collection').equals('visits').toArray();
+            for (const qItem of pendingQueueItems) {
+              if (qItem.data && qItem.data.visitData && qItem.data.visitData.patientId === localId) {
+                qItem.data.visitData.patientId = serverPatient._id;
+                await db.syncQueue.put(qItem);
+              }
+            }
+
+            // Update the React state for visits to reference the new server patient ID
+            setVisits(prev => prev.map(v => v.patientId === localId ? { ...v, patientId: serverPatient._id } : v));
+          }
+
           setPatients(prev => {
             // Replace temp placeholder with server record
             return prev.map(p => {
