@@ -591,11 +591,29 @@ export const DataProvider = ({ children }) => {
     if (!window.confirm("Are you sure you want to delete this visit record?")) return;
 
     try {
-      await api.delete(`/visits/${id}`);
+      const isTemp = String(id).startsWith('V-TEMP');
+      
+      if (!isTemp) {
+        await api.delete(`/visits/${id}`);
+      }
+
+      // Remove from React State
       setVisits(prev => prev.filter(v => v.id !== id));
 
-      // Remove from local DB
+      // Remove from IndexedDB
       await db.visits.delete(id);
+
+      // Clean up the syncQueue if there is a pending CREATE action for this temporary visit
+      if (isTemp) {
+        const pendingItems = await db.syncQueue.where('collection').equals('visits').toArray();
+        const visitItem = pendingItems.find(item => item.data && item.data.localId === id);
+        if (visitItem) {
+          await db.syncQueue.delete(visitItem.id);
+          // Recalculate pending sync count
+          const count = await db.syncQueue.where('status').equals('pending').count();
+          setPendingSyncCount(count);
+        }
+      }
     } catch (err) {
       console.error("API Error", err);
     }
@@ -603,14 +621,31 @@ export const DataProvider = ({ children }) => {
 
   const deletePatient = async (id) => {
     try {
-      await api.delete(`/patients/${id}`);
+      const isTemp = String(id).startsWith('TEMP-');
+      
+      if (!isTemp) {
+        await api.delete(`/patients/${id}`);
+      }
+
+      // Remove from React State
       setPatients(prev => prev.filter(p => p.id !== id));
+
+      // Remove from IndexedDB
+      await db.patients.delete(id);
+
+      // Clean up the syncQueue if there is a pending CREATE action for this temporary patient
+      if (isTemp) {
+        const pendingItems = await db.syncQueue.where('collection').equals('patients').toArray();
+        const patientItem = pendingItems.find(item => item.data && item.data.localId === id);
+        if (patientItem) {
+          await db.syncQueue.delete(patientItem.id);
+          // Recalculate pending sync count
+          const count = await db.syncQueue.where('status').equals('pending').count();
+          setPendingSyncCount(count);
+        }
+      }
     } catch (err) {
       console.error("API Error", err);
-      /*
-      console.warn("Offline fallback", err);
-      setPatients(prev => prev.filter(p => p.id !== id));
-      */
     }
   };
 
