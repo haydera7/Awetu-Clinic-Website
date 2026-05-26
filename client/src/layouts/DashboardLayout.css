@@ -313,6 +313,70 @@
   color: var(--color-primary);
 }
 
+/* =========================================================
+   📱 Dashboard Navbar — Responsive (small screens only)
+   ========================================================= */
+
+/* Compact padding on mobile */
+@media (max-width: 639px) {
+  .dashboard-navbar {
+    padding: 0 var(--spacing-3);
+    height: 64px;
+  }
+
+  /* Hide search bar entirely on very small screens */
+  .search-bar {
+    display: none;
+  }
+
+  /* Sync badge: hide text labels, show icon only */
+  .sync-indicator span {
+    display: none;
+  }
+
+  .sync-indicator {
+    gap: 0;
+    padding: var(--spacing-2);
+  }
+
+  /* Tighten right-side gap */
+  .navbar-right {
+    gap: var(--spacing-2);
+  }
+
+  .navbar-left {
+    gap: var(--spacing-2);
+  }
+}
+
+/* Medium-small: shrink search bar instead of hiding it */
+@media (min-width: 640px) and (max-width: 767px) {
+  .dashboard-navbar {
+    padding: 0 var(--spacing-4);
+  }
+
+  .search-bar {
+    width: 160px;
+  }
+
+  /* Sync badge: hide text, keep icon */
+  .sync-indicator span {
+    display: none;
+  }
+
+  .sync-indicator {
+    gap: 0;
+    padding: var(--spacing-2);
+  }
+}
+
+/* Tablet: moderate search bar size */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-bar {
+    width: 200px;
+  }
+}
+
 /* Dashboard Content Area */
 .dashboard-content {
   flex: 1;

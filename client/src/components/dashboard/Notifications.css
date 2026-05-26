@@ -314,3 +314,51 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* ==========================================================
+   📱 Notifications — Responsive Breakpoints
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  /* Prevent dropdown from overflowing the viewport */
+  .notifications-dropdown {
+    width: calc(100vw - 24px);
+    right: -12px; /* re-anchor from the right edge */
+  }
+
+  /* Tighter header */
+  .notifications-header {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  /* Shorter list so it doesn't push off-screen */
+  .notifications-list {
+    max-height: 320px;
+  }
+
+  /* Tighter item padding */
+  .notification-item {
+    padding: var(--spacing-3) var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  /* Compact empty state */
+  .empty-notifications {
+    padding: 32px 16px;
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .notifications-dropdown {
+    width: 320px;
+  }
+
+  .notifications-list {
+    max-height: 360px;
+  }
+}
+
+

@@ -303,3 +303,155 @@
   color: var(--color-gray-500);
   font-style: italic;
 }
+
+/* ==========================================================
+   📱 StaffList — Responsive Breakpoints
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  .staff-page {
+    gap: var(--spacing-5);
+  }
+
+  /* Header stacks */
+  .page-header {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    align-items: flex-start;
+  }
+
+  /* "Add Staff" button full width */
+  .page-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Filter bar wraps */
+  .panel-filters {
+    flex-wrap: wrap;
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .btn-icon-label {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Table: tighter */
+  .staff-table th,
+  .staff-table td {
+    padding: var(--spacing-3) var(--spacing-3);
+    font-size: 11px;
+  }
+
+  /* Hide: Department (col 3), Contact (col 4) */
+  /* Keep: ID, Name, Status, Actions */
+  .staff-table th:nth-child(3),
+  .staff-table td:nth-child(3),
+  .staff-table th:nth-child(4),
+  .staff-table td:nth-child(4) {
+    display: none;
+  }
+
+  /* Shrink avatar */
+  .staff-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  .action-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Pagination stacks */
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    align-items: flex-start;
+    padding: var(--spacing-4);
+  }
+
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--spacing-3);
+  }
+
+  .pagination-btn span {
+    display: none;
+  }
+
+  .pagination-btn {
+    padding: 8px 12px;
+  }
+
+  .empty-state {
+    padding: 40px !important;
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .panel-filters {
+    flex-wrap: wrap;
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  /* Hide Contact column */
+  .staff-table th:nth-child(4),
+  .staff-table td:nth-child(4) {
+    display: none;
+  }
+
+  .staff-table th,
+  .staff-table td {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: 12px;
+  }
+
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+  }
+
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ── Tablet: 768–1023px ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .staff-table th,
+  .staff-table td {
+    padding: var(--spacing-3) var(--spacing-5);
+    font-size: 12px;
+  }
+
+  .panel-filters {
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+
+  .search-wrapper {
+    max-width: 340px;
+  }
+}

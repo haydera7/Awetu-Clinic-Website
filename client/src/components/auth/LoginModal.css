@@ -281,3 +281,53 @@
   width: 20px;
   height: 20px;
 }
+
+/* ==========================================================
+   📱 LoginModal — Responsive Breakpoints
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  /* Tighten inner padding — 40px is too wide on mobile */
+  .login-header {
+    padding: 24px 20px 10px;
+  }
+
+  .login-body {
+    padding: 0 20px 24px;
+  }
+
+  /* Slightly smaller title */
+  .login-title {
+    font-size: 20px;
+  }
+
+  .login-subtitle {
+    font-size: 13px;
+  }
+
+  /* Input height: stay comfortable on mobile */
+  .login-field {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .login-submit-btn {
+    height: 46px;
+    font-size: 15px;
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .login-header {
+    padding: 28px 28px 10px;
+  }
+
+  .login-body {
+    padding: 0 28px 24px;
+  }
+}
+

@@ -70,3 +70,156 @@
   background: var(--color-primary);
   border-radius: 2px;
 }
+
+
+/* ==========================================================
+   📱 Appointments — Responsive Breakpoints
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  /* Reduce page padding */
+  .dashboard-page {
+    padding: var(--spacing-4) !important;
+  }
+
+  /* Page header: stack title above button */
+  .dashboard-page > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-5) !important;
+  }
+
+  /* "Schedule Follow-up" button: full width */
+  .dashboard-page > div:first-child .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Filter panel: reduce padding */
+  .dashboard-page .glass-panel {
+    padding: var(--spacing-4) !important;
+  }
+
+  /* Search box: full width, override min-width inline style */
+  .search-box {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+
+  /* Date picker: full width, override inline width */
+  .dashboard-page .form-group {
+    width: 100% !important;
+    margin-bottom: 0;
+  }
+
+  /* Filter row: stack search + date picker */
+  .dashboard-page .glass-panel > div {
+    flex-direction: column !important;
+  }
+
+  /* Table: tighter cell padding */
+  .data-table th,
+  .data-table td {
+    padding: 10px 8px !important;
+    font-size: 12px;
+  }
+
+  /* Hide: Doctor (col 3), Type (col 4) */
+  /* Keep: Time, Patient, Status, Actions */
+  .data-table th:nth-child(3),
+  .data-table td:nth-child(3),
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4) {
+    display: none;
+  }
+
+  /* Action buttons: smaller */
+  .data-table .btn {
+    padding: 3px 8px !important;
+    font-size: 11px !important;
+  }
+
+  /* Booking modal: full screen */
+  .modal-content.glass-panel {
+    width: calc(100vw - 32px) !important;
+    padding: var(--spacing-5) !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Modal form 2-col grid → single column */
+  .modal-content .form-group + div[style*="grid"],
+  .modal-content form > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Calendar grid (if shown) */
+  .calendar-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .dashboard-page > div:first-child {
+    flex-wrap: wrap !important;
+    gap: var(--spacing-3);
+  }
+
+  .search-box {
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+
+  .dashboard-page .form-group {
+    width: 100% !important;
+  }
+
+  .dashboard-page .glass-panel > div {
+    flex-direction: column !important;
+  }
+
+  /* Hide Type column */
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4) {
+    display: none;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 12px 10px !important;
+    font-size: 13px;
+  }
+
+  .modal-content.glass-panel {
+    width: calc(100vw - 48px) !important;
+  }
+
+  .calendar-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+/* ── Tablet: 768–1023px ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .data-table th,
+  .data-table td {
+    padding: 12px 12px !important;
+  }
+
+  .search-box {
+    min-width: 200px !important;
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}

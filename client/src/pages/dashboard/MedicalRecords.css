@@ -322,3 +322,168 @@
   color: var(--color-gray-500);
   font-style: italic;
 }
+
+/* ==========================================================
+   📱 MedicalRecords — Responsive Breakpoints
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  .medical-records-page {
+    gap: var(--spacing-5);
+  }
+
+  /* Header stacks */
+  .page-header {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    align-items: flex-start;
+  }
+
+  /* Tabs: allow horizontal scroll instead of wrapping */
+  .mr-tabs-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: -8px;
+    padding-bottom: 8px;
+  }
+
+  .mr-tabs-nav {
+    white-space: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .mr-tab-item {
+    padding: 8px 14px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  /* Filter bar: search full-width */
+  .panel-filters {
+    flex-wrap: wrap;
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .btn-icon-label {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Table: tighter cells */
+  .mr-table th,
+  .mr-table td {
+    padding: var(--spacing-3) var(--spacing-3);
+    font-size: 11px;
+  }
+
+  /* Hide: Date (col 4), Doctor (col 5), Notes (col 6) */
+  /* Keep: Record ID, Patient, Title, Actions */
+  .mr-table th:nth-child(4),
+  .mr-table td:nth-child(4),
+  .mr-table th:nth-child(5),
+  .mr-table td:nth-child(5),
+  .mr-table th:nth-child(6),
+  .mr-table td:nth-child(6) {
+    display: none;
+  }
+
+  .action-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Pagination stacks */
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    align-items: flex-start;
+    padding: var(--spacing-4);
+  }
+
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--spacing-3);
+  }
+
+  .pagination-btn span {
+    display: none;
+  }
+
+  .pagination-btn {
+    padding: 8px 12px;
+  }
+
+  .empty-state {
+    padding: 40px !important;
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .panel-filters {
+    flex-wrap: wrap;
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  /* Hide Notes column */
+  .mr-table th:nth-child(6),
+  .mr-table td:nth-child(6) {
+    display: none;
+  }
+
+  .mr-table th,
+  .mr-table td {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: 12px;
+  }
+
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+  }
+
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ── Tablet: 768–1023px ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .mr-table th,
+  .mr-table td {
+    padding: var(--spacing-3) var(--spacing-5);
+    font-size: 12px;
+  }
+
+  .panel-filters {
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+
+  .search-wrapper {
+    max-width: 340px;
+  }
+
+  /* Truncate notes on tablet */
+  .notes-summary-cell {
+    max-width: 160px;
+  }
+}

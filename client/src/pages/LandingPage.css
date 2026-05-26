@@ -1580,3 +1580,128 @@
 .landing-ann-card:has(.landing-ann-img-wrapper) .ann-card-header {
   padding-top: 16px;
 }
+
+/* ==========================================================
+   📱 LandingPage — Additional Mobile Fixes
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  /* Section headings: reduce size */
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Hero stats row: wrap on very small screens */
+  .hero-stats-row {
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+  }
+
+  /* Hero visual: scale down 3D mockup */
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .hero-mockup-main {
+    width: 200px;
+    height: 360px;
+  }
+
+  /* Comparison: drop the scale that causes overflow */
+  .comp-card.highlight {
+    transform: none;
+    margin: 0;
+  }
+
+  /* Announcement section: less padding */
+  .landing-announcements {
+    padding: 40px 0;
+  }
+
+  .announcements-header {
+    margin-bottom: 24px;
+  }
+
+  /* Landing ann grid: single column */
+  .landing-announcements-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Ann card image: shorter */
+  .landing-ann-img-wrapper {
+    height: 150px;
+  }
+
+  /* Feature cards: tighter padding */
+  .feature-card {
+    padding: var(--spacing-5);
+  }
+
+  /* Highlight list items: less padding */
+  .highlight-item {
+    padding: var(--spacing-3) var(--spacing-4);
+  }
+
+  /* Preview mockup: full width */
+  .preview-mockup {
+    border-radius: var(--radius-lg);
+  }
+
+  /* Footer container padding */
+  .footer-container {
+    padding: var(--spacing-10) var(--spacing-4);
+    gap: var(--spacing-8);
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* Comparison: no scale to prevent x-overflow */
+  .comp-card.highlight {
+    transform: none;
+  }
+
+  /* Landing ann grid: 2 columns */
+  .landing-announcements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .landing-ann-img-wrapper {
+    height: 160px;
+  }
+
+  .footer-container {
+    padding: var(--spacing-12) var(--spacing-5);
+  }
+}
+
+/* ── Tablet: 768–1023px ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* Comparison: partial scale only */
+  .comp-card.highlight {
+    transform: scale(1.02);
+  }
+
+  /* Landing ann grid: 2 columns at tablet */
+  .landing-announcements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

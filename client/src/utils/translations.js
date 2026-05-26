@@ -84,7 +84,16 @@ export const translations = {
     patient: 'Patient',
     searchPlaceholder: 'Search by patient name or ID...',
     noAppointments: 'No appointments found.',
-    followUpSchedules: 'Patient follow-up schedules and return dates'
+    followUpSchedules: 'Patient follow-up schedules and return dates',
+
+    // Messages
+    searchReceptionists: 'Search receptionists...',
+    receptionDesk: 'Reception Desk',
+    chatWelcomeDesc: 'Select an active receptionist from the desk panel to request appointments or ask operational queries.',
+    requestAppointment: 'Request Appointment',
+    labInquiry: 'Lab Inquiry',
+    billingHelp: 'Billing Help',
+    msgPlaceholder: 'Type your message to receptionist...'
   },
   Amharic: {
     // Sidebar
@@ -171,7 +180,16 @@ export const translations = {
     patient: 'ታካሚ',
     searchPlaceholder: 'በታካሚ ስም ወይም መለያ ፈልግ...',
     noAppointments: 'ምንም ቀጠሮ አልተገኘም።',
-    followUpSchedules: 'የታካሚ ክትትል ቀጠሮዎች እና መመለሻ ቀናት'
+    followUpSchedules: 'የታካሚ ክትትል ቀጠሮዎች እና መመለሻ ቀናት',
+
+    // Messages
+    searchReceptionists: 'ተቀባይ ሰራተኞችን ፈልግ...',
+    receptionDesk: 'መቀበያ ጠረጴዛ',
+    chatWelcomeDesc: 'ቀጠሮ ለመጠየቅ ወይም ጥያቄ ለማቅረብ ንቁ ሰራተኛ ይምረጡ።',
+    requestAppointment: 'ቀጠሮ ጠይቅ',
+    labInquiry: 'የላብ ውጤት ጥያቄ',
+    billingHelp: 'የሂሳብ እርዳታ',
+    msgPlaceholder: 'ለተቀባይ ሰራተኛ መልዕክትዎን ያስገቡ...'
   },
   Oromic: {
     // Sidebar
@@ -257,7 +275,16 @@ export const translations = {
     patient: 'Dhukkubsataa',
     searchPlaceholder: 'Maqaa ykn Eenyummeessan Barbaadi...',
     noAppointments: 'Beellamni hin argamne.',
-    followUpSchedules: 'Guyyoota deebii fi beellama hordoffii'
+    followUpSchedules: 'Guyyoota deebii fi beellama hordoffii',
+
+    // Messages
+    searchReceptionists: 'Simattuu Barbaadi...',
+    receptionDesk: 'Teessoo Simataa',
+    chatWelcomeDesc: 'Simattuu argamu filadhuu beellama gaafachuu ykn gaaffii dhiyeessuuf.',
+    requestAppointment: 'Beellama Gaafadhu',
+    labInquiry: 'Gaaffii Laaboraatoorii',
+    billingHelp: 'Gargaarsa Kaffaltii',
+    msgPlaceholder: 'Ergaa simattuu ergamuuf barreessi...'
   }
 };
 

@@ -325,13 +325,148 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-@media (max-width: 768px) {
+
+/* ==========================================================
+   📱 Settings — Responsive Breakpoints
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  /* Stack sidebar above content */
   .settings-container {
     grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-4);
   }
-  
-  .form-group-grid, .theme-options {
+
+  /* Sidebar: horizontal scrollable tab row */
+  .settings-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    gap: var(--spacing-1);
+    padding: var(--spacing-2);
+    border-left: none;
+    border-bottom: 3px solid var(--color-primary);
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    height: auto;
+  }
+
+  .settings-tab {
+    flex-shrink: 0;
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: 12px;
+    gap: var(--spacing-2);
+    white-space: nowrap;
+  }
+
+  /* Content: full padding reduces */
+  .settings-section {
+    padding: var(--spacing-5);
+  }
+
+  /* Form grid: single column */
+  .form-group-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  /* Form actions: stack buttons */
+  .form-actions {
+    flex-direction: column;
+    gap: var(--spacing-3);
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Theme cards: 2 per row on mobile */
+  .theme-options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+  }
+
+  .theme-card {
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .theme-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Toggle rows: allow wrapping of description */
+  .setting-toggle-row {
+    gap: var(--spacing-3);
+    align-items: flex-start;
   }
 }
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .settings-container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-5);
+  }
+
+  /* Sidebar: horizontal row */
+  .settings-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3);
+    border-left: none;
+    border-bottom: 3px solid var(--color-primary);
+    height: auto;
+  }
+
+  .settings-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .form-group-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .settings-section {
+    padding: var(--spacing-6);
+  }
+}
+
+/* ── Tablet: 768–1023px ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .settings-container {
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-6);
+  }
+
+  .form-group-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .theme-options {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-4);
+  }
+
+  .settings-section {
+    padding: var(--spacing-6);
+  }
+}
+
+
 

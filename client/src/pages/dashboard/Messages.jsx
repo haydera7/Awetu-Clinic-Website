@@ -8,7 +8,8 @@ import {
   Calendar, 
   FileText, 
   Info,
-  Clock
+  Clock,
+  ArrowLeft
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useSocket } from '../../contexts/SocketContext';
@@ -184,7 +185,7 @@ export default function Messages() {
   };
 
   return (
-    <div className="messages-container fade-in">
+    <div className={`messages-container fade-in${activeContact ? ' mobile-chat-open' : ''}`}>
       {/* Sidebar Contacts List */}
       <div className="messages-sidebar">
         <div className="sidebar-chat-header">
@@ -193,7 +194,7 @@ export default function Messages() {
             <Search size={16} className="search-icon-chat" />
             <input 
               type="text" 
-              placeholder={role === 'Patient' ? 'Search receptionists...' : 'Search patients by name or ID...'} 
+              placeholder={role === 'Patient' ? t('searchReceptionists') : 'Search patients by name or ID...'} 
               className="search-chat-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -256,6 +257,14 @@ export default function Messages() {
           <>
             {/* Active Header */}
             <div className="active-chat-header">
+              {/* Back button — only visible on mobile */}
+              <button
+                className="mobile-back-btn"
+                onClick={() => setActiveContact(null)}
+                aria-label="Back to contacts"
+              >
+                <ArrowLeft size={20} />
+              </button>
               <div className="header-user-card">
                 <div 
                   className="chat-avatar-wrapper" 
@@ -267,7 +276,7 @@ export default function Messages() {
                   <div className="header-name">{activeContact.name}</div>
                   <div className="header-role">
                     <span className={`active-presence-dot ${isContactOnline(activeContact.id) ? 'online' : ''}`}></span>
-                    {activeContact.role === 'Patient' ? `Patient (ID: ${activeContact.pid})` : 'Reception Desk'}
+                    {activeContact.role === 'Patient' ? `Patient (ID: ${activeContact.pid})` : t('receptionDesk')}
                   </div>
                 </div>
               </div>
@@ -316,19 +325,19 @@ export default function Messages() {
                   onClick={() => handleShortcutClick('appointment')} 
                   className="shortcut-pill-btn"
                 >
-                  <Calendar size={14} /> Request Appointment
+                  <Calendar size={14} /> {t('requestAppointment')}
                 </button>
                 <button 
                   onClick={() => handleShortcutClick('lab')} 
                   className="shortcut-pill-btn"
                 >
-                  <FileText size={14} /> Lab Inquiry
+                  <FileText size={14} /> {t('labInquiry')}
                 </button>
                 <button 
                   onClick={() => handleShortcutClick('billing')} 
                   className="shortcut-pill-btn"
                 >
-                  <Info size={14} /> Billing Help
+                  <Info size={14} /> {t('billingHelp')}
                 </button>
               </div>
             )}
@@ -337,7 +346,7 @@ export default function Messages() {
             <div className="chat-input-composer">
               <input 
                 type="text" 
-                placeholder={role === 'Patient' ? 'Type your message to receptionist...' : 'Type response to patient...'} 
+                placeholder={role === 'Patient' ? t('msgPlaceholder') : 'Type response to patient...'} 
                 className="composer-input-field"
                 value={typedMessage}
                 onChange={(e) => setTypedMessage(e.target.value)}
@@ -361,7 +370,7 @@ export default function Messages() {
             <h3>{role === 'Patient' ? t('messages') : 'Real-time Message Desk'}</h3>
             <p>
               {role === 'Patient' 
-                ? 'Select an active receptionist from the desk panel to request appointments or ask operational queries.' 
+                ? t('chatWelcomeDesc')
                 : 'Select a patient from the sidebar list to view operational chats and coordinate details.'}
             </p>
           </div>

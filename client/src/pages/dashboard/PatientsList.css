@@ -301,3 +301,154 @@
   color: var(--color-gray-500);
   font-style: italic;
 }
+
+/* ==========================================================
+   📱 PatientsList — Responsive Breakpoints (small screens)
+   ========================================================== */
+
+/* ── Mobile: ≤ 639px ───────────────────────────────────── */
+@media (max-width: 639px) {
+
+  /* Tighten overall page gap */
+  .patients-page {
+    gap: var(--spacing-5);
+  }
+
+  /* Stack page header vertically */
+  .page-header {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    align-items: flex-start;
+  }
+
+  /* Filter bar: wrap so search bar and filter button stack */
+  .panel-filters {
+    flex-wrap: wrap;
+    padding: var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .btn-icon-label {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Table: tighter cell padding & font */
+  .patients-table th,
+  .patients-table td {
+    padding: var(--spacing-3) var(--spacing-3);
+    font-size: 11px;
+  }
+
+  /* Hide less-critical columns on very small screens */
+  /* Keep: ID, Name, Status, Actions */
+  .patients-table th:nth-child(3),
+  .patients-table td:nth-child(3),
+  .patients-table th:nth-child(4),
+  .patients-table td:nth-child(4),
+  .patients-table th:nth-child(5),
+  .patients-table td:nth-child(5) {
+    display: none;
+  }
+
+  /* Shrink avatar */
+  .patient-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+
+  /* Shrink action buttons */
+  .action-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Pagination: stack info above controls */
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    align-items: flex-start;
+    padding: var(--spacing-4);
+  }
+
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: var(--spacing-3);
+  }
+
+  /* Pagination buttons: hide text, keep icons */
+  .pagination-btn span {
+    display: none;
+  }
+
+  .pagination-btn {
+    padding: 8px 12px;
+  }
+
+  /* Empty state less tall */
+  .empty-state {
+    padding: 40px !important;
+  }
+}
+
+/* ── Large phone: 640–767px ────────────────────────────── */
+@media (min-width: 640px) and (max-width: 767px) {
+
+  .panel-filters {
+    flex-wrap: wrap;
+    padding: var(--spacing-4);
+  }
+
+  .search-wrapper {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  /* Hide Contact column to save space */
+  .patients-table th:nth-child(4),
+  .patients-table td:nth-child(4) {
+    display: none;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: 12px;
+  }
+
+  .pagination-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+  }
+
+  .pagination-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ── Tablet: 768–1023px ────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .patients-table th,
+  .patients-table td {
+    padding: var(--spacing-3) var(--spacing-5);
+    font-size: 12px;
+  }
+
+  .panel-filters {
+    padding: var(--spacing-4) var(--spacing-5);
+  }
+
+  .search-wrapper {
+    max-width: 340px;
+  }
+}
